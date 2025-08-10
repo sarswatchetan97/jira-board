@@ -5,7 +5,7 @@
 }
 
 .app_header > form {
-    width: 40%;
+    width: 60%;
 }
 
 .task_input {
@@ -20,17 +20,33 @@
     width: 100%;
 }
 
+.task_input ::placeholder {
+    color: #686868;
+}
+
 .task_form_bottom {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.tag {
-    font-size: 14px;
+.task_status {
+    font-size: 16px;
     font-weight: 500px;
-    background-color: #f9f9f9;
     border: 1px solid gray;
     border-radius: 5px;
-    padding: 2px 10px;
+    width: 210px;
+    padding: 10px;
+}
+
+.task_submit {
+    font-size: 16px;
+    font-weight: 500px;
+    background-color: rgb(50, 50, 240);
+    color: #f9f9f9;
+    border-radius: 5px;
+    height: 40px;
+    padding: 3px 13px;
+    cursor: pointer;
+    margin-left: 10px;
 }
