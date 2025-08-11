@@ -1,11 +1,12 @@
-import "./Tag.css"
+import "./Tag.css";
 
-const Tag = () => {
-    return (
-        <>
-            <button className="tag">DEV</button>
-        </>
-    )
-}
+const Tag = (props) => {
+  const { tagName } = props;
+  return (
+    <>
+      <button className="tag">{tagName}</button>
+    </>
+  );
+};
 
-export default Tag
+export default Tag;
