@@ -6,7 +6,8 @@ import { useState } from "react";
 const TaskForm = () => {
   const [taskData, setTaskData] = useState({
     task: '',
-    status: 'Ready for Development'
+    status: 'Ready for Development',
+    tags: []
   })
 
   const handleChange = (e) => {
@@ -20,6 +21,21 @@ const TaskForm = () => {
     e.preventDefault();
     console.log(taskData);
   }
+
+  const selectedTag = (tag) => {
+    if(taskData.tags.some((item) => item === tag)) {
+      const filteredTags = taskData.tags.filter((item) => item!==tag); //filter the tags which do not match with tag
+      setTaskData((prev) => {
+        return { ...prev, tags: filteredTags };
+      });
+    } else {
+      setTaskData((prev) => {
+        return { ...prev, tags: [ ...prev.tags, tag ] }
+      })
+    }
+  }
+
+  console.log(taskData);
 
   // const [task, setTask] = useState("");
   // const [status, setStatus] = useState("");
@@ -46,9 +62,9 @@ const TaskForm = () => {
         />
         <div className="task_form_bottom">
           <div>
-            <Tag tagName="DEV" />
-            <Tag tagName="QA" />
-            <Tag tagName="Product Owner" />
+            <Tag tagName="DEV" selectedTag={selectedTag}/>
+            <Tag tagName="QA" selectedTag={selectedTag}/>
+            <Tag tagName="Product Owner" selectedTag={selectedTag}/>
           </div>
           <div>
             <select className="task_status" name="status" onChange={handleChange}>

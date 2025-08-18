@@ -1,10 +1,12 @@
 import "./Tag.css";
 
 const Tag = (props) => {
-  const { tagName } = props;
+  const { tagName, selectedTag } = props;
   return (
     <>
-      <button className="tag">{tagName}</button>
+      <button type="button" className="tag" onClick={() => {selectedTag(tagName)}}>
+        {tagName}
+      </button>
     </>
   );
 };
