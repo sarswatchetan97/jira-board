@@ -27,16 +27,22 @@ const TaskForm = () => {
   }
 
   const selectedTag = (tag) => {
-    if(taskData.tags.some((item) => item === tag)) {
-      const filteredTags = taskData.tags.filter((item) => item!==tag); //filter the tags which do not match with tag
-      setTaskData((prev) => {
-        return { ...prev, tags: filteredTags };
-      });
-    } else {
-      setTaskData((prev) => {
-        return { ...prev, tags: [ ...prev.tags, tag ] }
-      })
-    }
+    setTaskData((prev)=>{
+      const isSelected = prev.tags.includes(tag);
+      const tags = isSelected ? prev.tags.filter((item) => item !== tag) : [...prev.tags, tag];
+      return { ...prev, tags }; 
+    })
+    
+    // if(taskData.tags.some((item) => item === tag)) {
+    //   const filteredTags = taskData.tags.filter((item) => item!==tag); //filter the tags which do not match with tag
+    //   setTaskData((prev) => {
+    //     return { ...prev, tags: filteredTags };
+    //   });
+    // } else {
+    //   setTaskData((prev) => {
+    //     return { ...prev, tags: [ ...prev.tags, tag ] }
+    //   })
+    // }
   }
 
   console.log(taskData);
